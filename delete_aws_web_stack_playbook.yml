@@ -1,0 +1,36 @@
+- name: Delete web application stack in aws
+  hosts: localhost
+  any_errors_fatal: true 
+
+  tasks:
+
+    - name: delete a wordpress app
+      community.aws.cloudformation_stack_set:
+        name: WebApp1-WordPress
+        description: Deploy a WordPress App
+        state: absent
+        template: /c/Users/teeja/Desktop/Projects/aws-arch/cloud_formation_template/webapp/staticwebapp.yaml
+        regions:
+        - us-east-1
+
+
+    - name: Create a stack of vpc
+      community.aws.cloudformation_stack_set:
+        name: WebApp1-VPC
+        description: create vpc in aws account
+        state: absent
+        template: /c/Users/teeja/Desktop/Projects/aws-arch/cloud_formation_template/webapp/vpc-alb-app-db.yaml
+        regions:
+        - us-east-1
+
+
+    - name: Sending an e-mail using Gmail SMTP servers
+      community.general.mail:
+        host: smtp.gmail.com
+        port: 587
+        username: '{{ username }}'
+        password: '{{ password }}'
+        to: Tajudeen Abdulazeez <tabdulazeez99@gmail.com>
+        subject: Ansible-report
+        body: System {{ ansible_hostname }} has been successfully deleted.
+      delegate_to: localhost

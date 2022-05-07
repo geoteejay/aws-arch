@@ -1,0 +1,8 @@
+- name: Deploy a distributed web application in aws
+  hosts: localhost
+  any_errors_fatal: true 
+
+  roles:
+    - vpc
+    - wordpress
+    - notification

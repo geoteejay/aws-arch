@@ -1,0 +1,12 @@
+---
+# tasks file for notification
+- name: Sending an e-mail using Gmail SMTP servers
+  community.general.mail:
+    host: smtp.gmail.com
+    port: 587
+    username: '{{ username }}'
+    password: '{{ password }}'
+    to: Tajudeen Abdulazeez <tabdulazeez99@gmail.com>
+    subject: Ansible-report
+    body: System {{ ansible_hostname }} has been successfully provisioned.
+  delegate_to: localhost
