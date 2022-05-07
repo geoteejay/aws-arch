@@ -24,8 +24,8 @@ python -m pip install  paramiko
 pip install -r requirements.tct
 ```
 
-### Automated deployment of distributed web application using ansible playbook and 
-The cloud formation template used is from the [AWS well-achitected labs](https://wellarchitectedlabs.com/security/200_labs/200_automated_deployment_of_ec2_web_application/) , with a defense in depth approach incorporating a number of AWS security best practices.
+### Automated deployment of distributed web application using ansible playbook 
+The cloud formation template used is from the [AWS well-achitected labs](https://wellarchitectedlabs.com/security/200_labs/200_automated_deployment_of_ec2_web_application/) ,and with a defense in depth approach incorporating a number of AWS security best practices.
 
 The components created include:
 - [VPC](./docs/vpc-architecture.png)
