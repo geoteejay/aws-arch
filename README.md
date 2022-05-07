@@ -1,5 +1,5 @@
 ***
-## Architecting in AWS
+## Cloud Architecture
 ***
 
 ### Set up development environment
