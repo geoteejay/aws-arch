@@ -43,7 +43,7 @@ The components created include:
 
 [**Architecture framework**](./docs/architecture.png)
 
-**Deploy the web application in aws using the default aws profile in your pc**
+**Deploy the web application in aws using ansible**
 ```
 ansible-playbook aws_web_application_playbook.yml -i inventory.txt --ask-vault-pass
 ```
