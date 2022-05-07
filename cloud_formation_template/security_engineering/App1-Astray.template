@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+  template launched by service catalog to deploy the Astray game.
+Parameters:
+  LambdaRoleArn:
+    Type: String
+    Description: ARN of role for Lambda to assume to launch templates
+
+Resources:
+  # S3 static website
+  AstrayBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: 404.html
+
+  # Bucket policy to allow access without manually making files public
+  AstrayBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AstrayBucket
+      PolicyDocument:
+        Id: PublicRead
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub 'arn:aws:s3:::${AstrayBucket}/*'
+
+  # Lambda function to copy the files for the website to the bucket
+  LambdaCopyFiles:
+    Type: AWS::Lambda::Function
+    DependsOn: AstrayBucket
+    Properties:
+      Code:
+        ZipFile: !Sub |
+          import os, boto3, json
+          def lambda_handler(event, context):
+            s3 = boto3.client('s3')
+            astrayFiles = ['Astray/Box2dWeb.min.js', 'Astray/README.md', 'Astray/Three.js', 'Astray/ball.png', 'Astray/brick.png', 'Astray/concrete.png', 'Astray/index.html', 'Astray/jquery.js', 'Astray/keyboard.js', 'Astray/maze.js', 'index.html', 'script.js', 'style.css']
+            for object in astrayFiles:
+              copySource = { 'Bucket': '${AWS::Region}-tcprod', 'Key': 'courses/ILT-TF-200-SISECO/v2.6.31/lab-6-servicecatalog/scripts/AstrayFiles/'+object}
+              try:
+                s3.copy_object( CopySource=copySource, Bucket='${AstrayBucket}', Key=object)
+              except Exception as e:
+                print('Error: ' + str(e))
+
+            curlCMD = "curl -X PUT -H 'Content-Type:' --data-binary '{\"Status\" : \"SUCCESS\",\"Reason\" : \"Configuration Complete\",\"PhysicalResourceId\" : \"LambdaCopyFiles\",\"StackId\" : \"" + event["StackId"] + "\",\"RequestId\" : \"" + event["RequestId"] + "\",\"LogicalResourceId\" : \"" + event["LogicalResourceId"] + "\",\"UniqueId\" : \"FilesCoppied1\"}' \"" + event["ResponseURL"] + "\""
+            print(curlCMD)
+            try:
+              os.system(curlCMD)
+            except Exception as e:
+              print('Error: ' + str(e))
+
+      Handler: 'index.lambda_handler'
+      Role: !Ref 'LambdaRoleArn'
+      Runtime: python3.7
+      Timeout: 30
+      MemorySize: 128
+
+  # Custom function to triggerr the Lambda function
+  LambdaCopyFilesTrigger:
+    Type: 'Custom::LambdaCopyFilesTrigger'
+    Properties:
+      ServiceToken: !GetAtt LambdaCopyFiles.Arn
+
+Outputs:
+  AstrayURL:
+    Value: !GetAtt AstrayBucket.WebsiteURL
+    Description: URL for website hosted on S3
