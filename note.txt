@@ -1,0 +1,16 @@
+- create a gcp project for this assignment
+- first deploy compute instance to web server
+- install dependencies
+- install database server 
+- change the ip configuration to host ip 
+- start the datbase service
+- login and create user with necesssary permission
+- download code from github to the webserver using git 
+- run application in the webserver 
+- create and configure the load balancer
+- create a firewall rule 
+
+
+check images to use for the instance 
+- gcloud compute images list --project gce-uefi-images
+

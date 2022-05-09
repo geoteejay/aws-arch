@@ -5,6 +5,7 @@
     name: WebApp1-WordPress
     description: Deploy a WordPress App
     state: present
+    accounts: '{{ ACCOUNTS }}'
     template: /c/Users/teeja/Desktop/Projects/aws-arch/cloud_formation_template/webapp/staticwebapp.yaml
     regions:
     - us-east-1

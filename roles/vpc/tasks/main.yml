@@ -5,6 +5,7 @@
     name: WebApp1-VPC
     description: create vpc in aws account
     state: present
+    accounts: '{{ ACCOUNTS }}'
     template: /c/Users/teeja/Desktop/Projects/aws-arch/cloud_formation_template/webapp/vpc-alb-app-db.yaml
     regions:
     - us-east-1

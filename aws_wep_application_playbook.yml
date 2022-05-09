@@ -3,6 +3,7 @@
   any_errors_fatal: true 
 
   roles:
+  
     - vpc
     - wordpress
     - notification

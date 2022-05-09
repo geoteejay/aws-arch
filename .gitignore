@@ -1,1 +1,5 @@
 venv/
+my_account.json
+my_accout.json
+
+group_vars/all.yml

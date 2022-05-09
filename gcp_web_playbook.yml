@@ -1,0 +1,7 @@
+- name: Deploy a distributed web application in gcp
+  hosts: localhost
+  gather_facts: no
+
+    
+  roles:
+    - gcp_instance

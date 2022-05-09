@@ -1,5 +1,5 @@
 ***
-## Cloud Architecture
+## Architecting in the cloud 
 ***
 
 ### Set up development environment
@@ -23,8 +23,18 @@ python -m pip install  paramiko
 ```
 pip install -r requirements.tct
 ```
+***
+### Deploy a distributed web application in GCP
+***
+- [x] Create three gcp instance 
+- [ ] Basic configuration for all instances created
+- [ ] Deploy the application
+- [ ] Configure load balancer
+- [ ] Create and configure application firewall
 
+***
 ### Automated deployment of distributed web application using ansible playbook 
+***
 The cloud formation template used is from the [AWS well-achitected labs](https://wellarchitectedlabs.com/security/200_labs/200_automated_deployment_of_ec2_web_application/) ,and with a defense in depth approach incorporating a number of AWS security best practices.
 
 The components created include:
