@@ -26,7 +26,7 @@ pip install -r requirements.tct
 ***
 ### Deploy a distributed web application in GCP
 ***
-- [x] Create three gcp instance 
+- [x] Create three gcp instance with default vpv
 - [ ] Basic configuration for all instances created
 - [ ] Deploy the application
 - [ ] Configure load balancer
