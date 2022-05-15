@@ -1,5 +1,5 @@
 ***
-### Dataflow job
+### [Dataflow job](https://www.cloudskillsboost.google/focuses/1100?parent=catalog)
 ***
 **Steps**
 
@@ -32,7 +32,7 @@ python -m apache_beam.examples.wordcount --project $DEVSHELL_PROJECT_ID \
 
 
 ***
-### Dataproc 
+### [Dataproc](https://www.cloudskillsboost.google/focuses/585?parent=catalog) 
 ***
 **Steps**
 
@@ -64,7 +64,7 @@ gcloud dataproc jobs submit spark --cluster example-cluster \
 
 
 ***
-### Dataprep: Qwik Start
+### [Dataprep: Qwik Start](https://www.cloudskillsboost.google/focuses/584?parent=catalog)
 ***
 
 **Steps**
@@ -84,7 +84,7 @@ gcloud dataproc jobs submit spark --cluster example-cluster \
 - Import datasets
 
 ***
-### Google Cloud Speech API: Qwik Start
+### [Google Cloud Speech API: Qwik Start](https://www.cloudskillsboost.google/focuses/588?parent=catalog)
 ***
 
 **Steps**
@@ -124,7 +124,7 @@ curl -s -X POST -H "Content-Type: application/json" --data-binary @request.json 
 
 
 ***
-### Cloud Natural Language API: Qwik Start
+### [Cloud Natural Language API: Qwik Start](https://www.cloudskillsboost.google/focuses/582?parent=catalog)
 ***
 
 **Steps**
@@ -157,7 +157,7 @@ gcloud ml language analyze-entities --content="Michelangelo Caravaggio, Italian 
 
 
 ***
-### Video Intelligence: Qwik Start
+### [Video Intelligence: Qwik Start](https://www.cloudskillsboost.google/focuses/603?parent=catalog)
 ***
 
 **Steps**
